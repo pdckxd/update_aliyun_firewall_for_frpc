@@ -20,3 +20,4 @@
 # Go workspace file
 go.work
 ~
+update_aliyun_firewall_for_frpc
