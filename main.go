@@ -17,11 +17,13 @@ import (
 
 /*
 *
+
   - 使用AK&SK初始化账号Client
+
   - @param accessKeyId
 
-zsh: command not found: go.mod
   - @return Client
+
   - @throws Exception
 */
 func CreateClient(accessKeyId *string, accessKeySecret *string) (_result *ecs20140526.Client, _err error) {

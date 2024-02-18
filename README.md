@@ -1,5 +1,5 @@
 ## Introduce
-Running on router to change SourceCidrIp for all matched security rules
+Running on router to change SourceCidrIp for all matched security rules in aliyun
 
 ## How to build for AMD64 platform
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w"
