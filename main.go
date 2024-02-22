@@ -46,7 +46,13 @@ func _main(args []*string) (_err error) {
 		os.Exit(1)
 	}
 	locationTag := *args[0]
-	client, _err := CreateClient(tea.String(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID")), tea.String(os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET")))
+	access_key := os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID")
+	access_key_secret := os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET")
+	if access_key == "" || access_key_secret == "" {
+		fmt.Println("error: please set env varialbe 'ALIBABA_CLOUD_ACCESS_KEY_ID' and 'ALIBABA_CLOUD_ACCESS_KEY_SECRET'")
+		os.Exit(1)
+	}
+	client, _err := CreateClient(tea.String(access_key), tea.String(access_key_secret))
 	if _err != nil {
 		return _err
 	}
@@ -143,7 +149,7 @@ func _main(args []*string) (_err error) {
 	}()
 
 	if tryErr != nil {
-		var error = &tea.SDKError{}
+		error := &tea.SDKError{}
 		if _t, ok := tryErr.(*tea.SDKError); ok {
 			error = _t
 		} else {
